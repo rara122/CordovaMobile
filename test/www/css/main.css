@@ -1,0 +1,277 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* vvvvv Header vvvvv */
+
+#header {
+    width: auto;
+    height: 130px;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(84,1,21,1);
+    color: rgb(205,192,146);
+}
+
+#headertopline {
+    height: 10px;
+    background-color: rgb(205, 192, 146);
+    border-bottom: solid 1px #000;
+}
+
+#headercontent {
+    height: 115px;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#fsulogo {
+    margin: 16px -50px 16px 16px;
+    padding-left: 0px; 
+}
+
+/* vv Nav Tabs vv */
+
+#headertabscontainer {
+    margin: 16px;
+    height: auto;
+    width: 304px;
+    float: right;
+}
+#headertabs {
+    margin: 0px;
+    background: rgba(230, 170, 170, 0.18);
+    height: auto;
+    width: 300px;
+    text-align: center;
+    font-family: sans-serif;
+    border: 1px solid rgb(205,192,146);   
+}
+#headertabs li a{
+    color: rgb(205,192,146);
+}
+#headertabs li a:hover{ 
+    color: rgba(84,1,21, .8);
+}
+#headertabs ul li {
+    width: 150px;
+}
+
+#ui-id-1 { /*"Union" Tab*/
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: 1px dashed rgb(205,192,146);
+}
+#ui-id-2 { /*"Social" Tab*/
+    border-radius: 0px;
+}
+#ui-id-3 { /*"DSA" Tab*/
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-left: 1px dashed rgb(205,192,146);
+}
+
+/* ^^ End Nav Tabs ^^ */
+
+#headerbottomline {
+    height: 3px;
+    background-color: #000;
+    border-top: 1px solid rgb(205,192,146);
+}
+
+/* ^^^^^ End Header ^^^^^ */
+
+/* vvvvv Body vvvvv */
+
+#content {
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+}
+
+#bgimg {
+    margin-left:auto;
+    margin-right:auto;
+    background:
+        url(../img/UnionPanorama1600.jpg)
+        no-repeat
+        center
+        0px
+        fixed;
+    position: relative;
+}
+
+#RSS {
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+}
+
+/* ^^^^^ End Body ^^^^^ */
+
+
+
+/* vvvvv Media Screens vvvvv */
+
+@media screen and (min-width: 1300px) {
+#RSS  {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+}
+
+
+@media screen and (max-width: 1280px) { /* 3 Columns */
+#RSS  {
+    width: 950px;
+}
+#headercontent {
+    width: 950px;
+}
+}
+ 
+ 
+@media screen and (max-width: 1000px) { /* 2 Columns */
+#RSS  {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#headercontent {
+    width: 740px;
+}
+}
+
+
+@media screen and (max-width: 765px) { /* 1 Column && Header gets resized smaller */
+#RSS  {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#header {
+    height: 109px;
+}
+#fsulogo {
+    margin: 16px -50px 16px 16px;
+    width:315px;
+    height: 56px;
+}
+.headertabicon {
+    width: 25px;
+    height: 25px;
+}
+#headertabscontainer {
+    width: 212px;
+}
+#headertabs {
+    font-size: small;
+    width: 210px;
+    float: left;
+}
+#headertabs .ui-menu-item  { /* Nav Tabs Formatting */
+    width: 70px;
+}
+#headertabs .ui-menu { /* Nav Sub Tabs Formatting */
+    width: 100px;
+    background: rgba(100, 100, 100, .86);
+}
+#headertabs .ui-menu .ui-menu-item  {
+    width: 100px;
+    height: 40px;
+}
+#headertabs ul a{
+    height: 40px;
+    line-height: 40px;
+}
+#headercontent {
+    height: 94px;
+    max-width: 650px;
+    width: auto;
+}
+}
+
+
+@media screen and (max-width: 545px) { /* 1 Column && No longer fixed width */
+#RSS  {
+    width: auto;
+}
+#header {
+    height: 163px;
+}
+#headercontent {
+    height: 145px;
+}
+#fsulogo {
+    float: left;
+    display: block;
+    margin: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#headertabs {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+#headertopline {
+    border-bottom: 1px solid #000;
+}
+
+/*Centered, wider tabs*/
+#headertabscontainer {
+    margin: 0px;
+    width: 100%;
+    background: rgba(230, 170, 170, 0.18);
+    background: linear-gradient(to right,rgba(84,1,21, 1), rgba(230, 170, 170, 0.18), rgba(84,1,21, 1));
+    border-top: 1px solid rgb(205,192,146);
+}
+#headertabs{
+    float: none;
+    border-radius: 0px;
+    border: 0px;
+    background: transparent;
+}
+#headercontent {
+    height: 148px;
+}
+#headertabs {
+    font-size: small;
+    width: 240px;
+    float: none;
+}
+#headertabs .ui-menu {
+    width: 100px;
+    background: rgba(100, 100, 100, .86);
+}
+#headertabs .ui-menu-item  {
+    width: 80px;
+}
+#headertabs .ui-menu .ui-menu-item  {
+    width: 100px;
+    height: 40px;
+}
+#headertabs ul a{
+    height: 40px;
+    line-height: 40px;
+}
+}
+
+
+@media screen and (max-width: 400px) { /* Size for Mobile device */
+#RSS  {
+    width: 370px;
+    padding-left: 8px;
+}
+}
