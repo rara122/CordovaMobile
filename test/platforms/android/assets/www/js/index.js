@@ -16,22 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- <script type="text/javascript" charset="utf-8">
-						document.addEventListener("deviceready", onDeviceReady, false);
-						
-						function onDeviceReady()
-						{ //Function to run when deviceready is received
-							navigator.geolocation.getCurrentPosition(onSuccess, onError);
-							var element = document.getElementById('geolocation');
-							element.innerHTML = "STUFFS";
-						}
-						
-						function onSuccess(position)
-						{
-							var element = document.getElementById('geolocation');
-							element.innerHTML = 'Latitude: ' + position.coords.latitude;
-						}
-					</script>
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -55,6 +40,18 @@ var app = {
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		var element = document.getElementById('geolocation');
 		element.innerHTML = "STUFFS";
+		
+		function onSuccess(position)
+		{
+			var element = document.getElementById('geolocation');
+			element.innerHTML = 'Latitude: ' + position.coords.latitude;
+		}
+		function onError(error) {
+			alert('code: '    + error.code    + '\n' +
+				  'message: ' + error.message + '\n' + 
+				  "OOPS ;D");
+		}
+		
 	
     },
     // Update DOM on a Received Event
@@ -68,14 +65,5 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
-	
-	function onSuccess(position)
-	{
-		var element = document.getElementById('geolocation');
-		element.innerHTML = 'Latitude: ' + position.coords.latitude;
-	}
-	function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
+
 };
