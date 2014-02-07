@@ -16,9 +16,36 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
     // Application Constructor
     initialize: function() {
+
+		var map;
+		var marker;
+		var currentLocation;
+		var OglesbyLat = 30.44476;
+		var OglesbyLong = -84.29720;
+		
+		function initialize() {
+		  var mapOptions = {
+			zoom: 18,
+			center: new google.maps.LatLng(OglesbyLat, OglesbyLong)
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'),
+			  mapOptions);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+		function addMarker(){
+			marker = new google.maps.Marker({
+				position: currentLocation,
+				map: map,
+				title: 'Hello World!'
+			});
+		}
+		
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -34,6 +61,43 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		
+			//GeoLocation Functions
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		var element = document.getElementById('geolocation');
+		element.innerHTML = "Loading Your Geo-Location ...";
+		
+		
+		function onSuccess(position)
+		{
+			var element = document.getElementById('geolocation');
+			element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+					'Longitude: '          + position.coords.longitude             + '<br />' +
+					'Altitude: '           + position.coords.altitude              + '<br />' +
+					'Accuracy: '           + position.coords.accuracy              + '<br />' +
+					'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+					'Heading: '            + position.coords.heading               + '<br />' +
+					'Speed: '              + position.coords.speed                 + '<br />' +
+					'Timestamp: '          + position.timestamp                    + '<br />';
+
+					
+			
+			currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			function addMarker(){
+				marker = new google.maps.Marker({
+					position: currentLocation,
+					map: map,
+					title: 'Hello World!'
+				});
+			}
+		}
+		function onError(error) {
+			alert('code: '    + error.code    + '\n' +
+				  'message: ' + error.message + '\n' + 
+				  "OOPS ;D");
+		}
+		
+	
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -47,3 +111,4 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+

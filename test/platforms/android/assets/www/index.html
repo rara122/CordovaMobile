@@ -24,101 +24,31 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-		
-		<title>Page Title</title>
-    <link rel="stylesheet" type="text/css" href="css/template.css">
-    <!-- ### Script for Tintup ### -->
-    <script src="https://d36hc0p18k1aoc.cloudfront.net/public/js/modules/tintembed.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <!-- ### Script for Parallax Scrolling ### -->
-    <script src="js/scroll.js"?></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-
-    <!-- ### Script for JQuery Menu ### -->
-    <script>
-        $(function() {
-            $( "#headertabs" ).menu({position: { my: 'left top', at: 'left bottom' }});
-        });
-    </script>
-    <!-- ### Menu Styling ### -->
-    <style>
-    .ui-menu {
-        width: 150px;
-        z-index: 1;
-        background: rgba(80,80,80, .7);
-    }
-    .ui-menu:after {
-        content: ".";
-        display: block;
-        clear: both;
-        visibility: hidden;
-        line-height: 0;
-        height: 0;
-    }
-    .ui-menu .ui-menu-item {
-        display: inline-block;
-        float: left;
-        margin: 0;
-        padding: 0;
-        width: 100px;
-        z-index: 1;
-    }
-    ui-menu.ui-widget.ui-widget-content.ui-corner-all {
-        height: 100px;
-    }
-    .ui-menu .ui-icon {
-        display: none;
-    }
-    </style>
-		
+        <title>Oglesby Union Guide</title>
     </head>
     <body>
-	
-	<!-- ### Header Section ### -->
-    <section id="header">
-        <div id="headertopline"></div>
-        <div id="headercontent">
-            <a href="#"><img id="fsulogo" src="./img/fsu-oglesby.png" alt="FSU Logo"/></a>
-            <div id="headertabscontainer">
-                <ul id="headertabs">
-                    <li class="headertab"><a href="#"><img class="headertabicon" src="img/OU-logo2.png" alt="Union" height="40px" width="40px"/><br/>Union</a></li>
-                    <li class="headertab"><a href="#"><img class="headertabicon" src="img/triangle.png" alt="Social" height="40px" width="40px"/><br/>Social</a><ul>
-                            <li class="headertabitem"><a href="#">More1</a></li>
-                            <li class="headertabitem"><a href="#">More2</a></li>
-                            <li class="headertabitem"><a href="#">More3</a></li>
-                            <li class="headertabitem"><a href="#">More4</a></li>
-                            <li class="headertabitem"><a href="#">More5</a></li>
-                        </ul>
-                    </li>
-                    <li class="headertab"><a href="#"><img class="headertabicon" src="img/circle.png" alt="DSA" height="40px" width="40px"/><br/>DSA</a></li>
-                </ul>
-            </div>
-            
-        </div>
-        <div id="headerbottomline"></div>
-    </section>
-    
-    <!-- ### Body Content Section ### -->
-    <section id="content">
-        <section id="bgimg" data-type="background" data-speed="4">
-            <section id="RSS">
-                <!-- ### Tintup ### -->
-                <div class="tintup" data-id="ou-dev-1380897098" data-columns="" data-expand="true" style="height:900px; width:100%;"><a href="http://www.tintup.com/blog/the-best-instagram-wall-display" style="width:118px;height:31px;background-image:url(//d33w9bm0n1egwm.cloudfront.net/assets/logos/poweredbytintsmall.png);position:absolute;bottom:10px;right: 20px;text-indent: -9999px;z-index:9;">instagram event slideshow</a></div>
-            </section>
-        </section>
-    </section>
-	
         <div class="app">
-            <h1>Apache Cordova</h1>
-			
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+			<div class="portraitView">
+				<div id="headerContainer">
+				**headerContainer: height:50px, width: 100%, border-top/bottom: 2px**
+				</div>
+				<h1>Oglesby Union Guide</h1>
+				<div id="deviceready" class="blink">
+					<p class="event listening">Connecting to Device</p>
+					<p class="event received">Device is Ready</p>
+				</div>
+				<div id="content">
+					<p id="geolocation"></p>
+					<div id="map-canvas"></div>
+				</div>
+				
+				<div id="footerContainer">
+				**footerContainer: height:50px, width: 100%, border-top/bottom: 2px**
+				</div>
+			</div>
         </div>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM77ACwUTvIU1UX0R5j70buk_OSfdl_58&sensor=false"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
