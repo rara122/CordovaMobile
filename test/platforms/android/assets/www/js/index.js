@@ -16,35 +16,36 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+var Map;
 var app = {
     // Application Constructor
     initialize: function() {
 
 		var map;
-		var marker;
 		var currentLocation;
-		var OglesbyLat = 30.44476;
-		var OglesbyLong = -84.29720;
+		var OglesbyUnion = new google.maps.LatLng(30.44476, -84.29720);
 		
+
 		function initialize() {
 		  var mapOptions = {
 			zoom: 18,
-			center: new google.maps.LatLng(OglesbyLat, OglesbyLong)
+			center: OglesbyUnion
 		  };
-		  map = new google.maps.Map(document.getElementById('map-canvas'),
-			  mapOptions);
+		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		Map = map;
 		}
+/*
+		//map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		var marker = new google.maps.Marker({
+			position: currentLocation,
+			map: map,
+			title: 'Hello World!'
+		});*/
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 		
-		function addMarker(){
-			marker = new google.maps.Marker({
-				position: currentLocation,
-				map: map,
-				title: 'Hello World!'
-			});
-		}
+		
+		
 		
         this.bindEvents();
     },
@@ -55,12 +56,16 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
+	
+	//var watchID = null;	
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		var options = {timeout: 30000, enableHighAccuracy: true};
+        var watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
 		
 			//GeoLocation Functions
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -70,33 +75,39 @@ var app = {
 		
 		function onSuccess(position)
 		{
-			var element = document.getElementById('geolocation');
-			element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
-					'Longitude: '          + position.coords.longitude             + '<br />' +
-					'Altitude: '           + position.coords.altitude              + '<br />' +
-					'Accuracy: '           + position.coords.accuracy              + '<br />' +
-					'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-					'Heading: '            + position.coords.heading               + '<br />' +
-					'Speed: '              + position.coords.speed                 + '<br />' +
-					'Timestamp: '          + position.timestamp                    + '<br />';
-
-					
+			// var element = document.getElementById('geolocation');
+			// element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+					// 'Longitude: '          + position.coords.longitude             + '<br />' +
+					// 'Altitude: '           + position.coords.altitude              + '<br />' +
+					// 'Accuracy: '           + position.coords.accuracy              + '<br />' +
+					// 'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+					// 'Heading: '            + position.coords.heading               + '<br />' +
+					// 'Speed: '              + position.coords.speed                 + '<br />' +
+					// 'Timestamp: '          + position.timestamp                    + '<br />';					
 			
 			currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			function addMarker(){
-				marker = new google.maps.Marker({
-					position: currentLocation,
-					map: map,
-					title: 'Hello World!'
-				});
-			}
+			var marker = new google.maps.Marker
+			({
+				position: currentLocation,
+				title: "currLocation"
+			});
+			marker.setMap(Map);
 		}
 		function onError(error) {
-			alert('code: '    + error.code    + '\n' +
-				  'message: ' + error.message + '\n' + 
-				  "OOPS ;D");
+			if(error.code == 2)
+			{
+				alert('GPS not detected:\nTurn GPS on for a more accurate location.');
+			}
+			else if(error.code == 3)
+			{
+				alert('GPS has not found a change in location in over a minute, your location may be inaccurate.');
+			}
+			else
+				alert('code: '    + error.code    + '\n' +
+					'message: ' + error.message + '\n' + 
+					"OOPS ;D");
 		}
-		
+				
 	
     },
     // Update DOM on a Received Event
